@@ -16,11 +16,11 @@ writeColor(color('black'));
 // @route   POST /singleFrame
 async function singleFrame(req, res) {
     try {
-        const body = await getPostData(req)
-        const { array : arr } = JSON.parse(body)
+        const body = await getPostData(req);
+        const { array : arr } = JSON.parse(body);
         leds.clear();
         arr.map(led => {
-            leds.setColor(led.index, [led.r, led.g, led.b])                        // Color of led (Red Green Blue)
+            leds.setColor(led.index, [led.r, led.g, led.b])                    // Color of led (Red Green Blue)
             leds.setChannelPower(led.index, parseInt(led.brightness)/100);     // Brightness of R channel.
             leds.setChannelPower(led.index + 1, parseInt(led.brightness)/100); // Brightness of G channel.
             leds.setChannelPower(led.index + 2, parseInt(led.brightness)/100); // Brightness of B channel.
@@ -28,11 +28,11 @@ async function singleFrame(req, res) {
         });
         leds.update();
 
-        res.writeHead(201, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({'render': true}))  
+        res.writeHead(201, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({'render': true}));
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
@@ -52,15 +52,16 @@ async function spectacle(req, res) {
                 leds.setChannelPower(led.index + 2, parseInt(led.brightness)/100); // Brightness of B channel.
             })
             leds.update();
-            await timer(16.66666667) // 60fps / 1000 ms => 16.6666667 ms/frame
+            console.log('frameRendered');
+            await timer(33.3333333) // 30fps / 1000 ms => 33.333333 ms/frame
             return true;
         });
 
-        res.writeHead(201, { 'Content-Type': 'application/json' })
-        return res.end(JSON.stringify({'render': true}))  
+        res.writeHead(201, { 'Content-Type': 'application/json' });
+        return res.end(JSON.stringify({'render': true}));
 
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 
