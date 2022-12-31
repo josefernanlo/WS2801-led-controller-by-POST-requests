@@ -1,6 +1,6 @@
 {
   "name": "ws2801-controller-by-post-requests",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,7 @@
   "devDependencies": {},
   "dependencies": {
     "uuid": "^8.3.1",
-    "rpi-ws2801": "^0.0.4"
+    "rpi-ws2801": "^0.0.4",
+    "onecolor": "^3.0.4"
   }
 }
