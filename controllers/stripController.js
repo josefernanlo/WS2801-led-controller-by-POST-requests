@@ -40,9 +40,11 @@ async function singleFrame(req, res) {
 // @route   POST /spectacle
 async function spectacle(req, res) {
     try {
+        leds.clear();
         const body = await getPostData(req);
         const { array : arr } = JSON.parse(body);
         arr.map( async (frame) => {
+            leds.clear();
             frame.map( led => {
                 leds.setColor(led.index, [led.r, led.g, led.b])                    // Color of led (Red Green Blue)
                 leds.setChannelPower(led.index, parseInt(led.brightness)/100);     // Brightness of R channel.
