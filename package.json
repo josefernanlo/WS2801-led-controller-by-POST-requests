@@ -1,17 +1,17 @@
 {
-  "name": "WS2801 controller by post Requests ",
-  "version": "0.0.1",
+  "name": "ws2801-controller-by-post-requests",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "uuid": "^8.3.1"
+    "uuid": "^8.3.1",
+    "rpi-ws2801": "^0.0.4"
   }
 }
