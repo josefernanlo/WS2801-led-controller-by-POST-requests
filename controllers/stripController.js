@@ -17,7 +17,7 @@ writeColor(color('black'));
 async function singleFrame(req, res) {
     try {
         const body = await getPostData(req)
-        const { arrary : arr } = JSON.parse(body)
+        const { array : arr } = JSON.parse(body)
         console.log(arr)
         arr.map(e => {
             leds.setColor(e.index, [e.r, e.g, e.b])                        // Color of led (Red Green Blue)
