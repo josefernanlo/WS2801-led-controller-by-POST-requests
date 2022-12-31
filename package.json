@@ -1,6 +1,6 @@
 {
   "name": "ws2801-controller-by-post-requests",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "index.js",
   "scripts": {
