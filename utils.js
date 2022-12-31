@@ -16,6 +16,11 @@ function getPostData(req) {
     })
 }
 
+function timer(ms)  { 
+    return new Promise(r => setTimeout(r, ms))
+};
+
 module.exports = {
-    getPostData
+    getPostData,
+    timer
 }

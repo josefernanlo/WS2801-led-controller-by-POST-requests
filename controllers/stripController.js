@@ -1,6 +1,6 @@
-const { getPostData } = require('../utils')
+const { getPostData, timer } = require('../utils')
 const leds = require("rpi-ws2801");
-const numberOfLeds = 800;
+const numberOfLeds = 850;
 const color = require('onecolor');
 
 leds.connect(numberOfLeds);
@@ -18,12 +18,13 @@ async function singleFrame(req, res) {
     try {
         const body = await getPostData(req)
         const { array : arr } = JSON.parse(body)
-        console.log(arr)
-        arr.map(e => {
-            leds.setColor(e.index, [e.r, e.g, e.b])                        // Color of led (Red Green Blue)
-            leds.setChannelPower(e.index, parseInt(e.brightness)/100);     // Brightness of R channel.
-            leds.setChannelPower(e.index + 1, parseInt(e.brightness)/100); // Brightness of G channel.
-            leds.setChannelPower(e.index + 2, parseInt(e.brightness)/100); // Brightness of B channel.
+        leds.clear();
+        arr.map(led => {
+            leds.setColor(led.index, [led.r, led.g, led.b])                        // Color of led (Red Green Blue)
+            leds.setChannelPower(led.index, parseInt(led.brightness)/100);     // Brightness of R channel.
+            leds.setChannelPower(led.index + 1, parseInt(led.brightness)/100); // Brightness of G channel.
+            leds.setChannelPower(led.index + 2, parseInt(led.brightness)/100); // Brightness of B channel.
+        
         });
         leds.update();
 
@@ -39,9 +40,19 @@ async function singleFrame(req, res) {
 // @route   POST /spectacle
 async function spectacle(req, res) {
     try {
-        const body = await getPostData(req)
-        const { array } = JSON.parse(body)
-    
+        const body = await getPostData(req);
+        const { array : arr } = JSON.parse(body);
+        arr.map( async (frame) => {
+            frame.map( led => {
+                leds.setColor(led.index, [led.r, led.g, led.b])                    // Color of led (Red Green Blue)
+                leds.setChannelPower(led.index, parseInt(led.brightness)/100);     // Brightness of R channel.
+                leds.setChannelPower(led.index + 1, parseInt(led.brightness)/100); // Brightness of G channel.
+                leds.setChannelPower(led.index + 2, parseInt(led.brightness)/100); // Brightness of B channel.
+            })
+            leds.update();
+            await timer(16.66666667) // 60fps / 1000 ms => 16.6666667 ms/frame
+            return true;
+        });
 
         res.writeHead(201, { 'Content-Type': 'application/json' })
         return res.end(JSON.stringify({'render': true}))  
