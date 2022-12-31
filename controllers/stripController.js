@@ -6,6 +6,11 @@ const color = require('onecolor');
 leds.connect(numberOfLeds);
 writeColor(color('black'));
 
+let gamma = [];
+for (let i = 0; i < 256; i++) {
+    gamma[i] = Math.pow(parseFloat(i) / 255.0, 2.5) * 255.0;
+}
+
 // @desc    rendes one frame
 // @route   POST /singleFrame
 async function singleFrame(req, res) {
