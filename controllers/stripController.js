@@ -1,9 +1,14 @@
 const { getPostData, timer } = require('../utils')
 const leds = require("rpi-ws2801");
-const numberOfLeds = 850;
 const color = require('onecolor');
 
+// Properties
+const numberOfLeds = 850;
+const clockSpeed = 1064959.92;
+
+leds.maxSpeedHz = clockSpeed; 
 leds.connect(numberOfLeds);
+
 
 let gamma = [];
 for (let i = 0; i < 256; i++) {
