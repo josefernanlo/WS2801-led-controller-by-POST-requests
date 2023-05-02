@@ -4,9 +4,6 @@ const color = require('onecolor');
 
 // Properties
 const numberOfLeds = 850;
-const clockSpeed = 1064959.92;
-
-leds.maxSpeedHz = clockSpeed; 
 leds.connect(numberOfLeds);
 
 
