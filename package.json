@@ -13,7 +13,7 @@
   "dependencies": {
     "spi-device": "^2.0.8",
     "uuid": "^8.3.1",
-    "rpi-ws2801": "file:/./packages/rpi-ws2801-0.0.5.tgz",
+    "rpi-ws2801": "josefernanlo/node-rpi-ws2801",
     "onecolor": "^3.0.4"
   }
 }
