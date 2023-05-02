@@ -12,7 +12,7 @@
   "devDependencies": {},
   "dependencies": {
     "uuid": "^8.3.1",
-    "rpi-ws2801": "^0.0.4",
+    "rpi-ws2801": "file:/./packages/rpi-ws2801-0.0.3.tgz",
     "onecolor": "^3.0.4"
   }
 }
