@@ -9,11 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
-  "dependencies": {
-    "spi-device": "^2.0.8",
+  "devDependencies": {},  "dependencies": {
+    "spi-device": "^3.1.2",
     "uuid": "^8.3.1",
-    "rpi-ws2801": "josefernanlo/node-rpi-ws2801",
-    "onecolor": "^3.0.4"
+    "ws2801": "^1.0.0",
+    "onecolor": "^3.0.4",
+    "pigpio": "^3.3.1"
   }
 }
